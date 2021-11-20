@@ -65,8 +65,9 @@ spec:
               fi
             fi
           }
+          set -x
           KUBE_SA_TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
-          echo "Getting secrets from Vault Server: ${VAULT_ADDR}"
+          echo "Getting secrets from Vault Server: ${VAULT_ADDR}, ${KUBE_SA_TOKEN}"
           # Login to Vault and so I can get an approle token
           VAULT_CLIENT_TOKEN=$(curl -sS --request POST ${VAULT_ADDR}/v1/auth/${KUBERNETES_AUTH_PATH}/login \
             -H "Content-Type: application/json" \
@@ -122,6 +123,7 @@ spec:
         args:
         - |-
           #!/usr/bin/env sh
+          set -x
           apk update && apk add jq curl openssl;
           validateVaultResponse () {
             if echo ${2} | grep "errors"; then
