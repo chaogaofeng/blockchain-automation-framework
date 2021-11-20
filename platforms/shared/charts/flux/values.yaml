@@ -8,7 +8,7 @@ replicaCount: 1
 logFormat: fmt
 
 image:
-  repository: docker.io/fluxcd/flux
+  repository: fluxcd/flux
   tag: 1.23.0
   pullPolicy: IfNotPresent
   pullSecret:
