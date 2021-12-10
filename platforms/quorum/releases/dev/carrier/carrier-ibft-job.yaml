@@ -19,7 +19,7 @@ spec:
       name: carrier-ibft-job
       namespace: carrier-quo
     image:
-      initContainerName: docker.io/alpine-utils:1.0
+      initContainerName: hyperledgerlabs/alpine-utils:1.0
       node: quorumengineering/quorum:21.4.2
       pullPolicy: Always
     acceptLicense: YES
